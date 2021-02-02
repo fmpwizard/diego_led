@@ -73,17 +73,33 @@ void rainbowCycle(uint16_t wait) {
   }
 }
 
+
+
+// cycle just two colors
+void cycleTwoColors(uint16_t wait) {
+  hoop.clear();
+
+  for(uint16_t i=0; i<numOfLeds; i++) {
+    hoop.setPixelColor(i, hoop.Color(250, 0, 0));
+    hoop.show();
+    delay(wait);
+    hoop.setPixelColor(i, hoop.Color(0, 0, 250));
+    hoop.show();
+    delay(wait);
+  }
+}
+
+
 void rainbowStop() {
   uint16_t x;
   for(x=0; x < numOfLeds; x++) {
     hoop.setPixelColor( x, hoop.Color(200,100,100));
   }
-//  hoop.setPixelColor(1, hoop.Color(200,100,100));
-
   hoop.show();
 }
 
 void loop() {
-    rainbowCycle(100);
+    //rainbowCycle(100);
     //rainbowStop();
+    cycleTwoColors(900);
 }
